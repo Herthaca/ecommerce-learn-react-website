@@ -1,6 +1,6 @@
-import { useState, useContext } from "react";
+import { useState, } from "react";
 import { useForm } from "react-hook-form";
-import { AuthContext } from "../context/AuthContext.jsx";
+import { useAuth } from "../context/AuthContext.jsx";
 import { useNavigate } from "react-router-dom";
 
 export default function Auth() {
@@ -9,7 +9,7 @@ export default function Auth() {
 
   const navigate = useNavigate();
 
-  const { signUp, user, login } = useContext(AuthContext);
+  const { signUp, login } = useAuth();
 
   const { register, handleSubmit, formState: { errors } } = useForm();
 
@@ -27,8 +27,6 @@ export default function Auth() {
     } else {
       setError(result.error);
     }
-
-    console.log(result);
   }
 
   return (
